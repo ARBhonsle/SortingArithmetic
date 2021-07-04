@@ -7,6 +7,7 @@ echo "a+b*c :$(($a+$b*$c))"
 echo "a*b+c :$(($a*$b+$c))"
 echo "c+a/b :$(($c+$a/$b))"
 echo "a%b+c :$(($a%$b+$c))"
+#dictionary result
 declare -A result
 result[one]=$(($a+$b*$c))
 result[two]=$(($a*$b+$c))
@@ -16,3 +17,11 @@ for key in ${!result[@]}
 do
 	echo $key $((result[$key]))
 done
+#array computeResult declared
+declare -a computeResult
+count=0
+for key in ${result[@]}
+do
+	computeResult[((count++))]=$key
+done
+echo "${computeResult[@]}"
