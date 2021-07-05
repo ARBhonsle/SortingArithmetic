@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 echo "SortingArithmetic"
 echo "give three inputs:"
 read a b c
@@ -24,4 +24,18 @@ for key in ${result[@]}
 do
 	computeResult[((count++))]=$key
 done
-echo "${computeResult[@]}"
+#desc order
+for((count=0;count<${#computeResult[@]};count++))
+do
+	for((c=0;c<$((${#computeResult[@]}-1));c++))
+	do
+		if [ $((computeResult[$c])) -lt $((computeResult[$(($c+1))])) ]
+		then
+			temp=$((computeResult[$c]))
+			computeResult[$c]=$((computeResult[$(($c+1))]))
+			computeResult[$(($c+1))]=$temp
+		fi
+	done
+done
+echo ${computeResult[@]}
+
