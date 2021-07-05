@@ -37,5 +37,12 @@ do
 		fi
 	done
 done
+echo "descending order"
 echo ${computeResult[@]}
 
+#sorting ascending order
+echo "ascending order"
+for((c=${#computeResult[@]};c>0;c--))
+do
+	echo $((computeResult[$(($c-1))]))
+done
